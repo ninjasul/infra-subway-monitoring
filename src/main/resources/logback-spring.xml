@@ -1,0 +1,47 @@
+<configuration debug="false">
+
+  <!--spring boot의 기본 logback base.xml은 그대로 가져간다.-->
+  <include resource="org/springframework/boot/logging/logback/base.xml"/>
+  <include resource="logback/console-appender.xml" />
+
+  <!-- local -->
+  <springProfile name="local">
+    <include resource="logback/application-appender.xml"/>
+    <include resource="logback/json-appender.xml" />
+
+    <root level="info">
+      <appender-ref ref="CONSOLE" />
+      <appender-ref ref="APPLICATION" />
+    </root>
+
+    <logger name="application" level="info">
+      <appender-ref ref="APPLICATION" />
+    </logger>
+
+    <logger name="json" level="info">
+      <appender-ref ref="JSON" />
+    </logger>
+  </springProfile>
+
+  <!-- test -->
+  <springProfile name="test">
+    <root level="debug">
+      <appender-ref ref="CONSOLE" />
+    </root>
+  </springProfile>
+
+  <!-- prod -->
+  <springProfile name="prod">
+    <include resource="logback/application-appender.xml"/>
+    <include resource="logback/json-appender.xml" />
+
+    <root level="info">
+      <appender-ref ref="APPLICATION" />
+    </root>
+
+    <logger name="json" level="info">
+      <appender-ref ref="JSON" />
+    </logger>
+  </springProfile>
+
+</configuration>
