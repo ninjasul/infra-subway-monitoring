@@ -24,7 +24,7 @@ export default function ()  {
 
   check(loginRes, {
     'logged in successfully': (resp) => resp.status === 200,
-    'correct distance' : (resp) => resp.json('distance') === 26
+    'correct distance' : (resp) => resp.json('distance') === 30
   });
 
   sleep(1);
