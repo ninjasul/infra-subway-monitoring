@@ -20,7 +20,7 @@ export default function ()  {
     },
   };
 
-  let loginRes = http.get(`${BASE_URL}/paths?source=${1}&target=${5}`, params);
+  let loginRes = http.get(`${BASE_URL}/paths?source=1&target=23`, params);
 
   check(loginRes, {
     'logged in successfully': (resp) => resp.status === 200,
